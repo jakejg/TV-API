@@ -25,7 +25,9 @@ async function searchShows(query) {
   })
   const showInfo = [];
   for (let i = 0; i < response.data.length; i++) {
+    
       const {id,name,summary} = response.data[i].show
+
       let image = response.data[i].show.image ? response.data[i].show.image.original : "https://tinyurl.com/tv-missing";
       showInfo.push({
         id,name,summary,image
@@ -111,8 +113,7 @@ function populateEpisodes(episodes, e) {
         <li>${episode.name} (${episode.season}, ${episode.number})</li>
     `)
   }
-
-  $('.modal-title').text(e.target.parentElement.firstElementChild.innerText);
+  $('.modal-title').text($(e.target).siblings('h5').text());
 }
 // handle button clicks
 async function buttonClick(e) {
